@@ -10,6 +10,7 @@ import io.airbyte.commons.features.FeatureFlags
 import io.airbyte.commons.json.Jsons
 import io.airbyte.commons.resources.MoreResources
 import io.airbyte.protocol.models.v0.ConnectorSpecification
+import java.nio.file.Path
 
 abstract class BaseConnector : Integration {
     open val featureFlags: FeatureFlags = EnvVariableFeatureFlags()
@@ -30,5 +31,9 @@ abstract class BaseConnector : Integration {
         // return a JsonSchema representation of the spec for the integration.
         val resourceString = MoreResources.readResource("spec.json")
         return Jsons.deserialize(resourceString, ConnectorSpecification::class.java)
+    }
+
+    companion object {
+        val FILE_TRANSFER_DIRECTORY: Path = Path.of("/file-transfer")
     }
 }
