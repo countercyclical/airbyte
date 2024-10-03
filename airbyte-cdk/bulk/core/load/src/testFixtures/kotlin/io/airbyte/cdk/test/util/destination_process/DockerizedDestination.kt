@@ -15,11 +15,13 @@ import io.airbyte.protocol.models.v0.ConfiguredAirbyteCatalog
 import io.github.oshai.kotlinlogging.KotlinLogging
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter
+import io.micronaut.context.annotation.Value
 import java.nio.file.Files
 import java.nio.file.Path
 import java.time.Clock
 import java.util.Locale
 import java.util.Scanner
+import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -194,5 +196,25 @@ class DockerizedDestination(
                     """.trimIndent()
             )
         }
+    }
+}
+
+@Singleton
+class DockerizedDestinationFactory(
+    @Value("\${airbyte.connector.metadata.docker-repository}") val imageName: String
+) : DestinationProcessFactory {
+    override fun createDestinationProcess(
+        command: String,
+        config: ConfigurationSpecification?,
+        catalog: ConfiguredAirbyteCatalog?,
+        deploymentMode: TestDeploymentMode,
+    ): DestinationProcess {
+        return DockerizedDestination(
+            imageName,
+            command,
+            config,
+            catalog,
+            deploymentMode,
+        )
     }
 }
