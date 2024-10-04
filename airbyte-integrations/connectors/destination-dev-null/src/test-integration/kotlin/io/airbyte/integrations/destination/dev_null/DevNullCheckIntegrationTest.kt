@@ -27,13 +27,19 @@ class DevNullCheckIntegrationTest :
             ),
     ) {
 
-    @Property(name = "airbyte.connector.metadata.docker-repository", value = "airbyte/destination-dev-null:dev")
+    @Property(
+        name = "airbyte.connector.metadata.docker-repository",
+        value = "airbyte/destination-dev-null:dev"
+    )
     @Test
     override fun testSuccessConfigs() {
         super.testSuccessConfigs()
     }
 
-    @Property(name = "airbyte.connector.metadata.docker-repository", value = "airbyte/destination-dev-null:dev")
+    @Property(
+        name = "airbyte.connector.metadata.docker-repository",
+        value = "airbyte/destination-dev-null:dev"
+    )
     @Test
     override fun testFailConfigs() {
         super.testFailConfigs()

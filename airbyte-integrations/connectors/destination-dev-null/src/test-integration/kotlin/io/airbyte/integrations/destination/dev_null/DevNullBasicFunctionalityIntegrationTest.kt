@@ -18,14 +18,19 @@ class DevNullBasicFunctionalityIntegrationTest :
         NoopExpectedRecordMapper,
         verifyDataWriting = false,
     ) {
-
-    @Property(name = "airbyte.connector.metadata.docker-repository", value = "airbyte/destination-dev-null:dev")
+    @Property(
+        name = "airbyte.connector.metadata.docker-repository",
+        value = "airbyte/destination-dev-null:dev"
+    )
     @Test
     override fun testCheck() {
         super.testCheck()
     }
 
-    @Property(name = "airbyte.connector.metadata.docker-repository", value = "airbyte/destination-dev-null:dev")
+    @Property(
+        name = "airbyte.connector.metadata.docker-repository",
+        value = "airbyte/destination-dev-null:dev"
+    )
     @Test
     override fun testBasicWrite() {
         super.testBasicWrite()
