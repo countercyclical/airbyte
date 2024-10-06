@@ -6,7 +6,7 @@ package io.airbyte.cdk.write
 
 import io.airbyte.cdk.message.Deserializer
 import io.airbyte.cdk.message.DestinationMessage
-import io.airbyte.cdk.message.MessageQueueWriter
+import io.airbyte.cdk.task.MessageQueueWriter
 import io.github.oshai.kotlinlogging.KLogger
 import io.github.oshai.kotlinlogging.KotlinLogging
 import jakarta.inject.Singleton

@@ -5,7 +5,7 @@
 package io.airbyte.cdk.write
 
 import io.airbyte.cdk.message.Deserializer
-import io.airbyte.cdk.message.MessageQueueWriter
+import io.airbyte.cdk.task.MessageQueueWriter
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.micronaut.context.annotation.Prototype
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest

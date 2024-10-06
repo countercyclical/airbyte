@@ -42,8 +42,6 @@ class WriteOperation(
     override fun execute() {
         runCatching {
                 runBlocking {
-                    launch { inputConsumer.run() }
-
                     launch { taskLauncher.start() }
 
                     launch { taskRunner.run() }
@@ -70,7 +68,7 @@ class WriteOperation(
 
 /** Override to provide a custom input stream. */
 @Factory
-class InputStreamFactory {
+class InputStreamProvider {
     @Singleton
     @Secondary
     @Requires(property = Operation.PROPERTY, value = "write")

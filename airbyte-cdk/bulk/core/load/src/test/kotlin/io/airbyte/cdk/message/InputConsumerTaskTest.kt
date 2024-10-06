@@ -12,6 +12,7 @@ import io.airbyte.cdk.command.MockDestinationCatalogFactory.Companion.stream2
 import io.airbyte.cdk.data.NullValue
 import io.airbyte.cdk.state.Reserved
 import io.airbyte.cdk.state.SyncManager
+import io.airbyte.cdk.task.InputConsumerTask
 import io.airbyte.cdk.util.takeUntilInclusive
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import jakarta.inject.Inject
@@ -30,9 +31,9 @@ import org.junit.jupiter.api.Test
             "MockDestinationCatalog",
         ]
 )
-class DestinationMessageQueueWriterTest {
+class InputConsumerTaskTest {
     @Inject lateinit var config: DestinationConfiguration
-    @Inject lateinit var writer: DestinationMessageQueueWriter
+    @Inject lateinit var writer: InputConsumerTask
     @Inject
     lateinit var recordQueueSupplier:
         MessageQueueSupplier<DestinationStream.Descriptor, Reserved<DestinationRecordWrapped>>
